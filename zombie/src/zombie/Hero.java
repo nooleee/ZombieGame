@@ -32,7 +32,9 @@ public class Hero extends Unit{
 			System.out.printf("히어로가 %d의 공격력으로 공격 : 현재 BOSS hp : %d 현재 BOSS shield : %d\n", power, boss.getHp(), boss.getShield());
 		}
 		else {
+			Zombie zombie = (Zombie) unit;
 			power = getRan().nextInt(getMax()) + 1;
+			System.out.printf("히어로가 %d의 공격력으로 공격 : 현재 zombie hp : %d\n", power, zombie.getHp());
 			
 		}
 	}
