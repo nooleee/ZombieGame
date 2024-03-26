@@ -30,7 +30,7 @@ public class Game {
 	
 	private int inputNumber(String messege) {
 		int number = -1;
-		System.out.println("messege" + " : ");
+		System.out.println(messege + " : ");
 		
 		try {
 			String input = scan.next();
@@ -42,12 +42,28 @@ public class Game {
 		return number;
 	}
 	
+	private void fightZombie() {
+		
+	}
+	
 	private void runGame(int select) {
 		if(select < 1 || select > 2)
 			return;
 		
 		if(select == 1) {
+			this.pos++;
 			
+			if(pos == zombie.getPos()) {
+				System.out.println("좀비를 만났습니다. 공격모드로 바뀝니다.");
+				fightZombie();
+			}
+			
+			if(pos == boss.getPos()) {
+				System.out.println("보스를 만났습니다. 공격모드로 바뀝니다.");
+				while(true) {
+					
+				}
+			}
 		}
 		else if(select == 2)
 			isRun = false;
