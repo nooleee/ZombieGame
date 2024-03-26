@@ -41,6 +41,8 @@ public class Hero extends Unit{
 		}
 		else {
 			boss.setHp(boss.getHp() - power);
+			if(boss.getHp() < 0)
+				boss.setHp(0);
 		}
 		System.out.printf("히어로가 %d의 공격력으로 공격 : 현재 BOSS hp : %d 현재 BOSS shield : %d\n", power, boss.getHp(), boss.getShield());
 		
@@ -50,7 +52,7 @@ public class Hero extends Unit{
 	public void recovery() {
 		if(count > 0) {
 			setHp(getHp() + 100);
-			System.out.printf("[체력 회복] 현재 체력	 : %d", getHp());
+			System.out.printf("[체력 회복] 현재 체력 : %d\n", getHp());
 			count--;
 		} else
 			System.err.println("보유중인 포션이 없습니다.");
