@@ -18,14 +18,11 @@ public class Hero extends Unit{
 		else {
 			Zombie zombie = (Zombie) unit;
 			power = getRan().nextInt(getMax()) + 1;
-			if(zombie.getHp() - power < 0) {
+			if(zombie.getHp() - power < 0) 
 				zombie.setHp(0);
-				System.out.printf("히어로가 %d의 공격력으로 공격 : 현재 zombie hp : %d\n", power, zombie.getHp());
-			} else {
+			 else 
 				zombie.setHp(zombie.getHp() - power);
-				System.out.printf("히어로가 %d의 공격력으로 공격 : 현재 zombie hp : %d\n", power, zombie.getHp());
-			}
-			
+			System.out.printf("히어로가 %d의 공격력으로 공격 : 현재 zombie hp : %d\n", power, zombie.getHp());
 		}
 	}
 	
