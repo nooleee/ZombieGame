@@ -38,7 +38,7 @@ public class Boss extends Unit{
 		if(hero.getHp() <= 0) {
 			hero.setHp(0);
 		}
-		System.out.printf("보스가 %d의 공격력으로 공격 : 현재 HERO hp : %d", power*2, hero.getHp());
+		System.out.printf("보스가 %d의 공격력으로 공격 : 현재 HERO hp : %d\n", power*2, hero.getHp());
 	}
 	
 	private void nomalAttack(Unit hero) {
@@ -48,7 +48,7 @@ public class Boss extends Unit{
 		if(hero.getHp() <= 0) {
 			hero.setHp(0);
 		}
-		System.out.printf("보스가 %d의 공격력으로 공격 : 현재 HERO hp : %d", power, hero.getHp());
+		System.out.printf("보스가 %d의 공격력으로 공격 : 현재 HERO hp : %d\n", power, hero.getHp());
 	}
 
 }
