@@ -36,13 +36,24 @@ public class Game {
 		return number;
 	}
 	
+	private void runGame(int select) {
+		if(select < 1 || select > 2)
+			return;
+		
+		if(select == 1) {
+			
+		}
+		else if(select == 2)
+			isRun = false;
+	}
+	
 
 	
 	public void run() {
 		while(isRun) {
 			printPos();
 			int select = inputNumber("1)앞으로 이동하기 2)종료하기");
-//			runGame(select);
+			runGame(select);
 		}
 	}
 
