@@ -46,16 +46,33 @@ public class Game {
 	}
 	
 	private void fightZombie() {
-		while(hero.getHp() > 0) {
+		while(true) {
 			int sel = inputNumber("1)공격하기 2)포션마시기");
 			if(sel == ATTACK) {
 				zombie.attack(hero);
 				hero.attack(zombie);
+				
+				if(result())
+					break;
 			}
 			else if(sel == POTION) {
 				hero.recovery();
 			}
 		}
+	}
+	
+	private boolean result() {
+		if(zombie.getHp() == 0) {
+			System.out.println("좀비/보스를 이겼습니다. 이동 할 수 있습니다.");
+			return true;
+		}
+		
+		if(hero.getHp() == 0) {
+			System.out.println("hero가 죽었습니다. 게임에서 졌습니다.");
+			isRun = false;
+			return true;
+		}
+		return false;
 	}
 	
 	private void runGame(int select) {
