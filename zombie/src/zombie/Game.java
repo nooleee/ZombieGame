@@ -9,6 +9,9 @@ public class Game {
 	private Hero hero;
 	private Zombie zombie;
 	private Boss boss;
+	
+	private final int ATTACK = 1;
+	private final int POTION = 1;
 
 	private Game() {
 		isRun = true;
@@ -43,7 +46,13 @@ public class Game {
 	}
 	
 	private void fightZombie() {
-		
+		int sel = inputNumber("1)공격하기 2)포션마시기");
+		if(sel == ATTACK) {
+			
+		}
+		else if(sel == POTION) {
+			
+		}
 	}
 	
 	private void runGame(int select) {
