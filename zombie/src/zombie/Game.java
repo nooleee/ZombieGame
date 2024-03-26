@@ -11,11 +11,11 @@ public class Game {
 	private Boss boss;
 	
 	private final int ATTACK = 1;
-	private final int POTION = 1;
+	private final int POTION = 2;
 
 	private Game() {
 		isRun = true;
-		hero = new Hero(1, 200, 20, 2);
+		hero = new Hero(1, 200, 20, 4);
 		zombie = new Zombie(5, 100, 10);
 		boss = new Boss(9, 300, 20, 100);
 		pos = hero.getPos();
@@ -52,7 +52,7 @@ public class Game {
 				zombie.attack(hero);
 				hero.attack(zombie);
 				
-				if(result())
+				if(resultZombie())
 					break;
 			}
 			else if(sel == POTION) {
@@ -61,8 +61,38 @@ public class Game {
 		}
 	}
 	
-	private boolean result() {
+	private boolean resultZombie() {
 		if(zombie.getHp() == 0) {
+			System.out.println("좀비/보스를 이겼습니다. 이동 할 수 있습니다.");
+			return true;
+		}
+		
+		if(hero.getHp() == 0) {
+			System.out.println("hero가 죽었습니다. 게임에서 졌습니다.");
+			isRun = false;
+			return true;
+		}
+		return false;
+	}
+	
+	private void fightBoss() {
+		while(true) {
+			int sel = inputNumber("1)공격하기 2)포션마시기");
+			if(sel == ATTACK) {
+				boss.attack(hero);
+				hero.attack(boss);
+				
+				if(resultBoss())
+					break;
+			}
+			else if(sel == POTION) {
+				hero.recovery();
+			}
+		}
+	}
+	
+	private boolean resultBoss() {
+		if(boss.getHp() == 0) {
 			System.out.println("좀비/보스를 이겼습니다. 이동 할 수 있습니다.");
 			return true;
 		}
@@ -82,6 +112,12 @@ public class Game {
 		if(select == 1) {
 			this.pos++;
 			
+			if(this.pos == 10) {
+				isRun = false;
+				System.out.println("게임에서 승리했습니다! 게임을 종료합니다.");
+				return;
+			}
+			
 			if(pos == zombie.getPos()) {
 				System.out.println("좀비를 만났습니다. 공격모드로 바뀝니다.");
 				fightZombie();
@@ -89,9 +125,7 @@ public class Game {
 			
 			if(pos == boss.getPos()) {
 				System.out.println("보스를 만났습니다. 공격모드로 바뀝니다.");
-				while(true) {
-					
-				}
+				fightBoss();
 			}
 		}
 		else if(select == 2)
