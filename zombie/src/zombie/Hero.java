@@ -4,10 +4,12 @@ public class Hero extends Unit{
 	
 	private int power;
 	private int count;	
+	private final int MAX_HP;
 
 	public Hero(int pos, int hp, int max, int count) {
 		super(pos, hp, max);
 		this.count = count;
+		this.MAX_HP = hp;
 	}
 
 	// 공격
@@ -52,6 +54,9 @@ public class Hero extends Unit{
 	public void recovery() {
 		if(count > 0) {
 			setHp(getHp() + 100);
+			if(getHp() > MAX_HP) {
+				setHp(MAX_HP);
+			}
 			System.out.printf("[체력 회복] 현재 체력 : %d\n", getHp());
 			count--;
 		} else
