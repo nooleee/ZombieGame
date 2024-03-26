@@ -46,12 +46,15 @@ public class Game {
 	}
 	
 	private void fightZombie() {
-		int sel = inputNumber("1)공격하기 2)포션마시기");
-		if(sel == ATTACK) {
-			
-		}
-		else if(sel == POTION) {
-			
+		while(hero.getHp() > 0) {
+			int sel = inputNumber("1)공격하기 2)포션마시기");
+			if(sel == ATTACK) {
+				zombie.attack(hero);
+				hero.attack(zombie);
+			}
+			else if(sel == POTION) {
+				hero.recovery();
+			}
 		}
 	}
 	
