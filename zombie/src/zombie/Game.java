@@ -6,10 +6,16 @@ public class Game {
 	private Scanner scan = new Scanner(System.in);
 	private boolean isRun;
 	private int pos;
+	private Hero hero;
+	private Zombie zombie;
+	private Boss boss;
 
 	private Game() {
-		pos = 1;
 		isRun = true;
+		hero = new Hero(1, 200, 20, 2);
+		zombie = new Zombie(5, 100, 10);
+		boss = new Boss(9, 300, 20, 100);
+		pos = hero.getPos();
 	}
 	
 	private static Game instance = new Game();
