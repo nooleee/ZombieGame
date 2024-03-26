@@ -14,10 +14,25 @@ public class Hero extends Unit{
 	@Override
 	public void attack(Unit unit) {
 		if(unit instanceof Boss) {
+			Boss boss = (Boss) unit;
 			power = getRan().nextInt(getMax()) + 1;
-			
+			if(boss.getShield() > 0) {
+				int damage = boss.getShield() - power;
+				if(damage >= 0) {
+					boss.setShield(boss.getShield() - power);
+				}
+				else {
+					boss.setShield(0);
+					boss.setHp(boss.getHp() - damage);
+				}
+			}
+			else {
+				boss.setHp(boss.getHp() - power);
+			}
+			System.out.printf("히어로가 %d의 공격력으로 공격 : 현재 BOSS hp : %d 현재 BOSS shield : %d\n", power, boss.getHp(), boss.getShield());
 		}
 		else {
+			power = getRan().nextInt(getMax()) + 1;
 			
 		}
 	}
