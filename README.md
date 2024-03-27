@@ -16,4 +16,4 @@
 
 > Demo
 > 
-![diagram](https://github.com/nooleee/ZombieGame/blob/master/image/ZOmbie.gif?raw=true)
+![diagram](https://github.com/nooleee/ZombieGame/blob/master/image/ZombieGame.gif?raw=true)
