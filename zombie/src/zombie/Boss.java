@@ -1,6 +1,6 @@
 package zombie;
 
-public class Boss extends Unit{
+public class Boss extends Zombie{
 	private int shield;
 	private final int FULL_POWER = 1;
 	private int power;
@@ -10,7 +10,7 @@ public class Boss extends Unit{
 		super(pos, hp, max);
 		this.shield = shield;
 	}
-	
+		
 	public int getShield() {
 		return this.shield;
 	}
@@ -20,7 +20,7 @@ public class Boss extends Unit{
 	}
 
 	@Override
-	void attack(Unit unit) {
+	public void attack(Unit unit) {
 		Hero hero = (Hero) unit;
 		int rNum = getRan().nextInt(4) + 1;
 		if(rNum == FULL_POWER) {
